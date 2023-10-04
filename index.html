@@ -1,0 +1,154 @@
+
+<html>
+<head>
+  <title>JSONPlaceholder Demo with fetch API</title>
+  <style>
+    #results{
+        background-color: aqua;
+    }
+  </style>
+</head>
+<body>
+  <h1>HEY GUYS PLEASE REQUEST FOR MY INFORMATION</h1>
+  <p>If you want to see userid, id, title and see if i'm completed just click on the request button</p>
+  <button onclick="Request()">Global API Fetch</button>
+  <div id="result"></div>
+</body>
+<script>
+  function Request(){
+    // Create an empty table element
+    const table = document.createElement('table');
+
+    // Create a table header row
+    const headerRow = document.createElement('tr');
+    const headerCells = ['ID','postID','name', 'email','body'];
+    for (const headerCell of headerCells) {
+      const th = document.createElement('th');
+      th.textContent = headerCell;
+      headerRow.appendChild(th);
+    }
+    table.appendChild(headerRow);
+
+    for (let i = 20; i <= 25; i++) {
+      fetch(`https://jsonplaceholder.typicode.com/comments/${i}`)
+        .then(function(response){
+          return response.json()
+        })
+        .then((response) => {
+         
+          const row = document.createElement('tr');
+
+          const td1 = document.createElement('td');
+          td1.textContent = response.id;
+          row.appendChild(td1);
+
+          const td2 = document.createElement('td');
+          td2.textContent = response.postId;
+          row.appendChild(td2);
+
+          const td3 = document.createElement('td');
+          td3.textContent = response.name;
+          row.appendChild(td3);
+
+          const td4 = document.createElement('td');
+          td4.textContent = response.email;
+          row.appendChild(td4);
+
+          const td5 = document.createElement('td');
+          td5.textContent = response.body;
+          row.appendChild(td5);
+
+
+          table.appendChild(row);
+        });
+    }
+
+    const result = document.getElementById('result');
+    result.appendChild(table);
+  }
+</script>
+</html>
+
+
+
+<html>
+<head>
+  <title>JSONPlaceholder Demo with fetch API</title>
+  <style>
+    #results{
+      background-color: aqua;
+    }
+  </style>
+</head>
+<body>
+  <h1>HEY GUYS PLEASE REQUEST FOR MY INFORMATION</h1>
+  <p>If you want to see userid, id, title and see if i'm completed just click on the request button</p>
+  <button onclick="Request()">Global API Fetch</button>
+  <div id="result"></div>
+</body>
+<script>
+  function Request(){
+    // Create an empty table element
+    const table = document.createElement('table');
+
+    // Create a table header row
+    const headerRow = document.createElement('tr');
+    const headerCells = ['ID','postID','name', 'email','body'];
+    for (const headerCell of headerCells) {
+      const th = document.createElement('th');
+      th.textContent = headerCell;
+      headerRow.appendChild(th);
+    }
+    table.appendChild(headerRow);
+
+    // Create a new comment object
+    const newComment = {
+      postId: 1,
+      name: 'John Doe',
+      email: 'john.doe@example.com',
+      body: 'This is a new comment.'
+    };
+
+    // Make a POST request to the JSONPlaceholder API to create the new comment
+    fetch('https://jsonplaceholder.typicode.com/comments', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newComment)
+    })
+      .then(function(response){
+        return response.json()
+      })
+      .then((response) => {
+        // Append the new comment to the table
+        const row = document.createElement('tr');
+
+        const td1 = document.createElement('td');
+        td1.textContent = response.id;
+        row.appendChild(td1);
+
+        const td2 = document.createElement('td');
+        td2.textContent = response.postId;
+        row.appendChild(td2);
+
+        const td3 = document.createElement('td');
+        td3.textContent = response.name;
+        row.appendChild(td3);
+
+        const td4 = document.createElement('td');
+        td4.textContent = response.email;
+        row.appendChild(td4);
+
+        const td5 = document.createElement('td');
+        td5.textContent = response.body;
+        row.appendChild(td5);
+
+        table.appendChild(row);
+      });
+
+    const result = document.getElementById('result');
+    result.appendChild(table);
+  }
+</script>
+</html>
