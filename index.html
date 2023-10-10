@@ -9,14 +9,13 @@
   </style>
 </head>
 <body>
-  <h1>HEY GUYS PLEASE REQUEST FOR MY INFORMATION</h1>
-  <p>If you want to see userid, id, title and see if i'm completed just click on the request button</p>
+  <h1>HEY GUYS PLEASE REQUEST FOR INFORMATION</h1>
+  <p>If you want to see id, post id and see if i'm completed just click on the request button and see the magic</p>
   <button onclick="Request()">Global API Fetch</button>
   <div id="result"></div>
 </body>
 <script>
   function Request(){
-    // Create an empty table element
     const table = document.createElement('table');
 
     // Create a table header row
@@ -62,7 +61,6 @@
           table.appendChild(row);
         });
     }
-
     const result = document.getElementById('result');
     result.appendChild(table);
   }
